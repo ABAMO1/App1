@@ -199,6 +199,48 @@ st.markdown("""
         border-right: 4px solid #4CAF50;
         font-weight: bold;
     }
+    /* إضافة للأنماط الموجودة */
+    @media screen and (max-width: 768px) {
+        .main {
+            padding: 1rem;
+        }
+        .metrics-grid {
+            grid-template-columns: 1fr;
+        }
+        .vitamin-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+    
+    .footer {
+        position: relative;
+        bottom: 0;
+        width: 100%;
+        text-align: center;
+        padding: 1rem;
+        background: linear-gradient(to right, #f8f9fa, #ffffff, #f8f9fa);
+        margin-top: 2rem;
+        border-top: 1px solid #eee;
+    }
+    
+    .footer-text {
+        color: #666;
+        font-size: 0.9rem;
+        font-weight: 500;
+    }
+    
+    /* تحسين التوافقية للأجهزة المحمولة */
+    .styled-table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+    
+    @media (prefers-reduced-motion: reduce) {
+        .recommendation-item:hover {
+            transform: none;
+        }
+    }
 </style>
 """, unsafe_allow_html=True)
 
@@ -496,18 +538,9 @@ if st.button("تحليل الحالة الصحية", key="analyze_button"):
     except Exception as e:
         st.error(f"❌ حدث خطأ: {str(e)}")
 
-# إضافة تذييل الصفحة
-st.markdown("---")
-st.markdown(
-    """
-   
-    """, 
-    unsafe_allow_html=True
-)
-
-# إضافة شعار المطور في الشريط الجانبي
-with st.sidebar:
-    st.markdown("### معلومات المطور")
-    st.markdown("""
-    - **المطور**:إبراهيم الجحيشي
-    """)
+# إضافة تذييل الصفحة الجديد في نهاية الملف
+st.markdown("""
+<div class="footer">
+    <span class="footer-text">تطوير: إبراهيم الجحيشي © {}</span>
+</div>
+""".format(datetime.now().year), unsafe_allow_html=True)
